@@ -1423,6 +1423,38 @@ components:
       type: string
       x-enum-varnames:
       - DISTRIBUTION
+    DistributionWidgetHistogramRequest:
+      description: The distribution widget visualization displays a histogram of points
+        of distribution-typed metrics, events, or APM request latencies in your application
+        that matches a search criteria.
+      properties:
+        query:
+          $ref: '#/components/schemas/DistributionWidgetHistogramRequestQuery'
+        request_type:
+          $ref: '#/components/schemas/DistributionWidgetHistogramRequestType'
+      required:
+      - query
+      - request_type
+      type: object
+    DistributionWidgetHistogramRequestQuery:
+      description: Query definition for distribution widget histogram request
+      example:
+        data_source: metrics
+        name: query1
+        query: histogram:trace.Load{*}
+      oneOf:
+      - $ref: '#/components/schemas/FormulaAndFunctionMetricQueryDefinition'
+      - $ref: '#/components/schemas/FormulaAndFunctionEventQueryDefinition'
+      - $ref: '#/components/schemas/FormulaAndFunctionApmResourceStatsQueryDefinition'
+      type: object
+    DistributionWidgetHistogramRequestType:
+      description: Request type for the histogram request
+      enum:
+      - histogram
+      example: histogram
+      type: string
+      x-enum-varnames:
+      - HISTOGRAM
     DistributionWidgetRequest:
       description: Updated distribution widget.
       properties:
@@ -1432,6 +1464,8 @@ components:
           $ref: '#/components/schemas/ApmStatsQueryDefinition'
         event_query:
           $ref: '#/components/schemas/LogQueryDefinition'
+        histogram_request:
+          $ref: '#/components/schemas/DistributionWidgetHistogramRequest'
         log_query:
           $ref: '#/components/schemas/LogQueryDefinition'
         network_query:
@@ -2322,6 +2356,7 @@ components:
       - error_rate
       - hits
       - latency_avg
+      - latency_distribution
       - latency_max
       - latency_p50
       - latency_p75
@@ -2335,6 +2370,7 @@ components:
       - ERROR_RATE
       - HITS
       - LATENCY_AVG
+      - LATENCY_DISTRIBUTION
       - LATENCY_MAX
       - LATENCY_P50
       - LATENCY_P75
