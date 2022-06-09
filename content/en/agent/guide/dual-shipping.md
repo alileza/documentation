@@ -47,17 +47,17 @@ In `datadog.yaml`:
 apm_config:
   [...]
   additional_endpoints:
-    "https://mydomain.datadoghq.com":
+    "https://trace.agent.datadoghq.com":
     - apikey2
     - apikey3
-    "https://mydomain.datadoghq.eu":
+    "https://trace.agent.datadoghq.eu":
     - apikey4
 
   profiling_additional_endpoints:
-    "https://mydomain.datadoghq.com":
+    "https://trace.agent.datadoghq.com":
     - apikey2
     - apikey3
-    "https://mydomain.datadoghq.eu":
+    "https://trace.agent.datadoghq.eu":
     - apikey4
 ```
 
@@ -79,10 +79,10 @@ In `datadog.yaml`:
 process_config:
   [...]
   additional_endpoints:
-    "https://mydomain.datadoghq.com":
+    "https://process.datadoghq.com":
     - apikey2
     - apikey3
-    "https://mydomain.datadoghq.eu":
+    "https://process.datadoghq.eu":
     - apikey4
 ```
 
